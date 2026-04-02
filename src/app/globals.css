@@ -87,3 +87,28 @@ input[type="range"]::-moz-range-thumb {
 .prose-content ol li {
   list-style-type: decimal;
 }
+
+.prose-chat strong {
+  color: #da7756;
+  font-weight: 600;
+}
+
+.prose-chat em {
+  font-style: italic;
+}
+
+.prose-chat ul {
+  margin: 0.375rem 0;
+  padding-left: 1.25rem;
+}
+
+.prose-chat li {
+  list-style-type: disc;
+  margin-bottom: 0.25rem;
+}
+
+.prose-chat br + br {
+  display: block;
+  content: "";
+  margin-top: 0.5rem;
+}

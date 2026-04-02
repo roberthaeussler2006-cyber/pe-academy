@@ -19,7 +19,11 @@ Guidelines:
 - When relevant, include numerical examples to illustrate concepts.
 - If asked about something outside PE/finance, politely redirect to PE topics.
 - Keep responses under 300 words unless a detailed walkthrough is needed.
-- Format responses with clear structure. Use line breaks between paragraphs.`;
+- Format responses as clean plain text. Use line breaks between paragraphs.
+- NEVER use markdown syntax like #, ##, ###, **, __, or * for formatting. Just write plain text.
+- For emphasis, simply write clearly. Do not wrap words in asterisks or underscores.
+- For lists, use simple dashes (- item) on new lines. Do not use numbered markdown lists.
+- Do not use any heading markers (#) at all.`;
 
     const response = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",

@@ -2,6 +2,28 @@
 
 import { useState, useRef, useEffect } from "react";
 
+function formatMessage(text: string): string {
+  const html = text
+    // Remove markdown headers (## , ### , etc.) but keep the text, make it bold
+    .replace(/^#{1,6}\s+(.+)$/gm, "<strong>$1</strong>")
+    // Bold: **text** or __text__
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/__(.+?)__/g, "<strong>$1</strong>")
+    // Italic: *text* or _text_ (but not inside words)
+    .replace(/(?<!\w)\*(.+?)\*(?!\w)/g, "<em>$1</em>")
+    .replace(/(?<!\w)_(.+?)_(?!\w)/g, "<em>$1</em>")
+    // Bullet lists: - item or * item
+    .replace(/^[\-\*]\s+(.+)$/gm, "<li>$1</li>")
+    // Numbered lists: 1. item
+    .replace(/^\d+\.\s+(.+)$/gm, "<li>$1</li>")
+    // Wrap consecutive <li> in <ul>
+    .replace(/((?:<li>.*<\/li>\n?)+)/g, "<ul>$1</ul>")
+    // Line breaks
+    .replace(/\n\n/g, "<br/><br/>")
+    .replace(/\n/g, "<br/>");
+  return html;
+}
+
 interface Message {
   role: "user" | "assistant";
   content: string;
@@ -121,7 +143,14 @@ export default function ChatBot({ moduleContext }: ChatBotProps) {
                   : "bg-cream-100 text-ink-700 border border-cream-300"
               }`}
             >
-              <div className="whitespace-pre-wrap">{msg.content}</div>
+              {msg.role === "user" ? (
+                <div className="whitespace-pre-wrap">{msg.content}</div>
+              ) : (
+                <div
+                  className="prose-chat"
+                  dangerouslySetInnerHTML={{ __html: formatMessage(msg.content) }}
+                />
+              )}
             </div>
           </div>
         ))}
