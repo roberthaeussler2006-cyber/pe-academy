@@ -38,14 +38,14 @@ export default function Sidebar() {
 
   const navContent = (
     <>
-      <Link href="/" className="block px-5 py-5 border-b border-navy-600">
+      <Link href="/" className="block px-5 py-5 border-b border-cream-300">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-gold-500 flex items-center justify-center">
-            <span className="font-mono text-navy-900 text-sm font-bold">PE</span>
+          <div className="w-8 h-8 bg-clay-500 flex items-center justify-center">
+            <span className="font-mono text-white text-sm font-bold">PE</span>
           </div>
           <div>
-            <div className="text-white font-semibold text-sm tracking-wide">PE ACADEMY</div>
-            <div className="text-gray-500 text-xs font-mono">v1.0</div>
+            <div className="text-ink-900 font-semibold text-sm tracking-wide">PE ACADEMY</div>
+            <div className="text-ink-400 text-xs font-mono">v1.0</div>
           </div>
         </div>
       </Link>
@@ -60,24 +60,24 @@ export default function Sidebar() {
               onClick={() => setMobileOpen(false)}
               className={`flex items-center gap-3 px-5 py-3 text-sm transition-colors ${
                 isActive
-                  ? "bg-navy-700 text-gold-500 border-l-2 border-gold-500"
-                  : "text-gray-400 hover:text-gray-200 hover:bg-navy-800 border-l-2 border-transparent"
+                  ? "bg-cream-200 text-clay-500 border-l-2 border-clay-500"
+                  : "text-ink-600 hover:text-ink-900 hover:bg-cream-100 border-l-2 border-transparent"
               }`}
             >
-              <span className="font-mono text-xs text-gray-600 w-5">{String(mod.id).padStart(2, "0")}</span>
+              <span className="font-mono text-xs text-ink-400 w-5">{String(mod.id).padStart(2, "0")}</span>
               <span className="flex-1 truncate">{mod.short}</span>
               {status === "complete" && (
-                <span className="w-2 h-2 bg-green-500" />
+                <span className="w-2 h-2 bg-green-600" />
               )}
               {status === "in-progress" && (
-                <span className="w-2 h-2 bg-gold-500" />
+                <span className="w-2 h-2 bg-clay-500" />
               )}
             </Link>
           );
         })}
       </nav>
-      <div className="px-5 py-4 border-t border-navy-600">
-        <div className="text-xs text-gray-600 font-mono">
+      <div className="px-5 py-4 border-t border-cream-300">
+        <div className="text-xs text-ink-400 font-mono">
           {Object.values(progress.modules).filter((m) => m.completed).length}/8 MODULES COMPLETE
         </div>
       </div>
@@ -87,21 +87,21 @@ export default function Sidebar() {
   return (
     <>
       {/* Desktop sidebar */}
-      <aside className="hidden lg:flex flex-col w-64 bg-navy-800 border-r border-navy-600 h-screen fixed left-0 top-0 z-40">
+      <aside className="hidden lg:flex flex-col w-64 bg-cream-50 border-r border-cream-300 h-screen fixed left-0 top-0 z-40">
         {navContent}
       </aside>
 
       {/* Mobile header */}
-      <header className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-navy-800 border-b border-navy-600 flex items-center justify-between px-4 h-14">
+      <header className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-cream-50 border-b border-cream-300 flex items-center justify-between px-4 h-14">
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-7 h-7 bg-gold-500 flex items-center justify-center">
-            <span className="font-mono text-navy-900 text-xs font-bold">PE</span>
+          <div className="w-7 h-7 bg-clay-500 flex items-center justify-center">
+            <span className="font-mono text-white text-xs font-bold">PE</span>
           </div>
-          <span className="text-white font-semibold text-sm">PE ACADEMY</span>
+          <span className="text-ink-900 font-semibold text-sm">PE ACADEMY</span>
         </Link>
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="text-gray-400 p-2"
+          className="text-ink-500 p-2"
           aria-label="Toggle menu"
         >
           {mobileOpen ? (
@@ -119,8 +119,8 @@ export default function Sidebar() {
       {/* Mobile drawer */}
       {mobileOpen && (
         <div className="lg:hidden fixed inset-0 z-40">
-          <div className="absolute inset-0 bg-black/60" onClick={() => setMobileOpen(false)} />
-          <aside className="absolute left-0 top-0 bottom-0 w-64 bg-navy-800 flex flex-col">
+          <div className="absolute inset-0 bg-black/30" onClick={() => setMobileOpen(false)} />
+          <aside className="absolute left-0 top-0 bottom-0 w-64 bg-cream-50 flex flex-col shadow-lg">
             {navContent}
           </aside>
         </div>

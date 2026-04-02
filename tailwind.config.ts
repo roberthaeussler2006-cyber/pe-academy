@@ -9,16 +9,39 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        cream: {
+          50: "#faf7f2",
+          100: "#f5f0e8",
+          200: "#ebe5d9",
+          300: "#d9d0c1",
+          400: "#c9bfae",
+          500: "#b5a998",
+        },
+        clay: {
+          500: "#da7756",
+          400: "#e08b6e",
+          600: "#c46644",
+        },
+        ink: {
+          900: "#1a1a1a",
+          800: "#2d2d2d",
+          700: "#3d3d3d",
+          600: "#555555",
+          500: "#777777",
+          400: "#999999",
+          300: "#bbbbbb",
+        },
+        // Keep old names as aliases for components that reference them
         navy: {
-          900: "#0a0f1e",
-          800: "#0f1629",
-          700: "#141c34",
-          600: "#1a2340",
+          900: "#f5f0e8",
+          800: "#ebe5d9",
+          700: "#d9d0c1",
+          600: "#c9bfae",
         },
         gold: {
-          500: "#f59e0b",
-          400: "#fbbf24",
-          600: "#d97706",
+          500: "#da7756",
+          400: "#e08b6e",
+          600: "#c46644",
         },
       },
       fontFamily: {

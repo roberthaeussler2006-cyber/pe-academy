@@ -18,7 +18,6 @@ export default function Calculator() {
     const exitEBITDA = initialEBITDA * Math.pow(1 + ebitdaGrowth / 100, holdPeriod);
     const exitEV = exitEBITDA * exitMultiple;
 
-    // Assume ~50% of initial debt paid down over hold period
     const debtRemaining = debtAmount * 0.5;
     const exitEquity = exitEV - debtRemaining;
 
@@ -58,8 +57,8 @@ export default function Calculator() {
   }) => (
     <div className="mb-4">
       <div className="flex justify-between items-center mb-2">
-        <label className="text-sm text-gray-400">{label}</label>
-        <span className="font-mono text-sm text-gold-500">
+        <label className="text-sm text-ink-600">{label}</label>
+        <span className="font-mono text-sm text-clay-500">
           {value}
           {unit}
         </span>
@@ -77,9 +76,9 @@ export default function Calculator() {
   );
 
   return (
-    <div className="border border-navy-600 bg-navy-800 p-6">
-      <h3 className="text-lg font-semibold text-white mb-1">IRR / MOIC Calculator</h3>
-      <p className="text-sm text-gray-500 mb-6">
+    <div className="border border-cream-300 bg-white p-6">
+      <h3 className="text-lg font-semibold text-ink-900 mb-1">IRR / MOIC Calculator</h3>
+      <p className="text-sm text-ink-400 mb-6">
         Adjust the inputs below. Assumes $100M initial EBITDA and 50% debt paydown over the hold period.
       </p>
 
@@ -94,61 +93,61 @@ export default function Calculator() {
 
         <div>
           <div className="grid grid-cols-2 gap-4 mb-6">
-            <div className="bg-navy-700 p-4 border border-navy-600">
-              <div className="text-xs text-gray-500 font-mono mb-1">IRR</div>
-              <div className={`text-3xl font-mono font-bold ${Number(results.irr) >= 20 ? "text-green-400" : Number(results.irr) >= 15 ? "text-gold-500" : "text-red-400"}`}>
+            <div className="bg-cream-100 p-4 border border-cream-300">
+              <div className="text-xs text-ink-400 font-mono mb-1">IRR</div>
+              <div className={`text-3xl font-mono font-bold ${Number(results.irr) >= 20 ? "text-green-600" : Number(results.irr) >= 15 ? "text-clay-500" : "text-red-500"}`}>
                 {results.irr}%
               </div>
             </div>
-            <div className="bg-navy-700 p-4 border border-navy-600">
-              <div className="text-xs text-gray-500 font-mono mb-1">MOIC</div>
-              <div className={`text-3xl font-mono font-bold ${Number(results.moic) >= 2.5 ? "text-green-400" : Number(results.moic) >= 2 ? "text-gold-500" : "text-red-400"}`}>
+            <div className="bg-cream-100 p-4 border border-cream-300">
+              <div className="text-xs text-ink-400 font-mono mb-1">MOIC</div>
+              <div className={`text-3xl font-mono font-bold ${Number(results.moic) >= 2.5 ? "text-green-600" : Number(results.moic) >= 2 ? "text-clay-500" : "text-red-500"}`}>
                 {results.moic}x
               </div>
             </div>
           </div>
 
-          <div className="text-xs font-mono text-gray-500 space-y-2 bg-navy-900 p-4 border border-navy-700">
-            <div className="text-gray-400 font-semibold mb-2">STEP-BY-STEP MATH</div>
+          <div className="text-xs font-mono text-ink-400 space-y-2 bg-cream-50 p-4 border border-cream-200">
+            <div className="text-ink-600 font-semibold mb-2">STEP-BY-STEP MATH</div>
             <div className="flex justify-between">
               <span>Entry EBITDA</span>
-              <span className="text-gray-300">${results.initialEBITDA}M</span>
+              <span className="text-ink-700">${results.initialEBITDA}M</span>
             </div>
             <div className="flex justify-between">
               <span>Entry EV ({entryMultiple}x EBITDA)</span>
-              <span className="text-gray-300">${results.entryEV}M</span>
+              <span className="text-ink-700">${results.entryEV}M</span>
             </div>
             <div className="flex justify-between">
               <span>Debt ({leverage}% of EV)</span>
-              <span className="text-gray-300">${results.debtAmount}M</span>
+              <span className="text-ink-700">${results.debtAmount}M</span>
             </div>
-            <div className="flex justify-between border-b border-navy-600 pb-2">
+            <div className="flex justify-between border-b border-cream-300 pb-2">
               <span>Equity Invested</span>
-              <span className="text-gold-500">${results.equityInvested}M</span>
+              <span className="text-clay-500">${results.equityInvested}M</span>
             </div>
             <div className="flex justify-between pt-1">
               <span>Exit EBITDA ({ebitdaGrowth}% growth x {holdPeriod}yr)</span>
-              <span className="text-gray-300">${results.exitEBITDA}M</span>
+              <span className="text-ink-700">${results.exitEBITDA}M</span>
             </div>
             <div className="flex justify-between">
               <span>Exit EV ({exitMultiple}x EBITDA)</span>
-              <span className="text-gray-300">${results.exitEV}M</span>
+              <span className="text-ink-700">${results.exitEV}M</span>
             </div>
             <div className="flex justify-between">
               <span>Remaining Debt (50% paydown)</span>
-              <span className="text-gray-300">${results.debtRemaining}M</span>
+              <span className="text-ink-700">${results.debtRemaining}M</span>
             </div>
-            <div className="flex justify-between border-t border-navy-600 pt-2">
+            <div className="flex justify-between border-t border-cream-300 pt-2">
               <span>Exit Equity Value</span>
-              <span className="text-green-400">${results.exitEquity}M</span>
+              <span className="text-green-600">${results.exitEquity}M</span>
             </div>
             <div className="flex justify-between">
               <span>MOIC = ${results.exitEquity}M / ${results.equityInvested}M</span>
-              <span className="text-gold-500">{results.moic}x</span>
+              <span className="text-clay-500">{results.moic}x</span>
             </div>
             <div className="flex justify-between">
               <span>IRR = {results.moic}x ^ (1/{holdPeriod}) - 1</span>
-              <span className="text-gold-500">{results.irr}%</span>
+              <span className="text-clay-500">{results.irr}%</span>
             </div>
           </div>
         </div>
